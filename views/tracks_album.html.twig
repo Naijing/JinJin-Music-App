@@ -1,0 +1,64 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+        <div class="container well">
+        <div class="row">
+            <div class="col-md-3">
+            {% if album.images|length > 0 %}
+                <img src="{{ album.images[0].url }}" width="300" height="300"/>
+            {% else %}
+                <span height="100" class="glyphicon glyphicon-apple"></span>
+            {% endif %}
+                </div>
+            <div class="col-md-5 col-md-offset-1">
+            <h2>Album : {{ album.name }}</h2>
+            <h4>Date de sortie de l'album : {{ album.release_date }}</h4>
+            <h4> Artists :
+                {% for artist in album.artists %}
+                    {{ artist.name }};
+                {% endfor %}
+            </h4>
+            <h5>Copyrights :
+                {% for c in album.copyrights %}
+                    {{ c.text }};
+                {% endfor %}
+            </h5>
+                </div>
+        </div>
+        </div>
+
+        <div class="container">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> Titre </th>
+                <th> Artiste </th>
+                <th> Ecouter~~<span class="glyphicon glyphicon-music"></span> </th>
+                <th> Ajouter </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for track in album.tracks.items %}
+                <tr>
+                    <td> {{ track.name }}</td>
+                    <td>
+                        {% for artist in track.artists %}
+                            {{ artist.name }}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <audio src="{{ track.preview_url }}" controls="controls"></audio>
+                    </td>
+
+                    <td align = "center"><a href="{{ url('add', {id: track.id} ) }}"><span
+                                    class="glyphicon glyphicon-heart"></span></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+            </div>
+
+
+
+{% endblock %}

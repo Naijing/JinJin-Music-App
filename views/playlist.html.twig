@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+        <p>
+        <h1 align="center">Playlist</h1>
+        </p>
+
+        <div class="container">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> Image d'album</th>
+                <th>Nom de chanson</th>
+                <th>Nom d'artiste</th>
+                <th>Nom d'album</th>
+                <th>Année</th>
+                <th>Ecouter~~<span class="glyphicon glyphicon-music"></span></th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for  res in resultat %}
+
+                <tr>
+                    <td><a href="{{ res.image }}"><img src="{{ res.image }}" width="100" height="100" /></a></td>
+                    <td> {{ res.track }}</td>
+                    <td>{{ res.artiste }}</td>
+                    <td> {{ res.album }} </td>
+                    <td>{{ res.annee }}</td>
+                    <td>
+                        <audio src="{{ res.preview }}" controls="controls"></audio>
+                    </td>
+
+                    <td align="center"><a href="{{ url('delete', {id: res.id} ) }}"><span
+                                    class="glyphicon glyphicon-remove-sign"></span> </a></td>
+
+                </tr>
+
+            {% endfor %}
+            </tbody>
+
+        </table>
+        </div>
+
+{% endblock %}

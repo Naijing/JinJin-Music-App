@@ -1,0 +1,9 @@
+<!ELEMENT playlist (item+)>
+<!ELEMENT item (image,track,artiste,album,annee,preview)>
+<!ELEMENT image (#PCDATA)>
+<!ELEMENT track (#PCDATA)>
+<!ELEMENT artiste (#PCDATA)>
+<!ELEMENT album (#PCDATA)>
+<!ELEMENT annee (#PCDATA)>
+<!ELEMENT preview (#PCDATA)>
+

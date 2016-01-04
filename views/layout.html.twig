@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Gtunes{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+          integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+          integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+    <nav id="nav" class="navbar navbar-default">
+        <a href="http://localhost/gtunes/musicmanage.php" class="navbar-brand">Home</a>
+        <ul class="nav navbar-nav">
+            <li><a href="http://localhost/gtunes/connexion.html">Deconnexion</a></li>
+
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown">{{ name_user }}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url('playlist') }}">Playlist</a></li>
+                    <li><a href="{{ url('exportxml') }}">Exporter en xml</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <form class="navbar-form navbar-left" action="{{ url('importxml') }} "
+                              enctype="multipart/form-data" method="post">
+
+                            <input type="file" name="myfile" required/>
+
+                            <button type="submit" class="btn btn-sm">Importer un fichier xml</button>
+                        </form>
+                    </li>
+
+                </ul>
+            </li>
+
+
+        </ul>
+    </nav>
+</div>
+
+
+{% block body %}
+{% endblock %}
+
+<div class="container">
+<hr>
+<footer>
+    <p>
+
+        © 2015-2016 WANG Naijing | LP développement Web et mobilité
+
+    </p>
+</footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+        integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ=="
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>

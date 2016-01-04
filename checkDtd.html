@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    </head>
+<script language="javascript">
+
+    var xmldoc =new ActiveXObject("Microsoft.XMLDOM");
+
+    xmldoc.validateOnParse="true";
+
+    xmldoc.load("playlist.xml");
+
+    var result=xmldoc.parseError.reason;
+    if(result!="")
+        {
+        document.write("error :"+xmldoc.parseError.reason+"<br/>");
+        document.write("ligne :"+xmldoc.parseError.line+"<br/>");
+         }
+    else
+    {
+        document.write("pas d'error!");
+         }
+     </script>
+</html>

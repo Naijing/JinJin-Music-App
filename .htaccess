@@ -1,0 +1,7 @@
+
+Options -MultiViews
+RewriteEngine on
+RewriteBase /gtunes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ search.php [QSA,L]
+

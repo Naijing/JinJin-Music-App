@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+
+
+
+        <p>
+        <h1 align="center">Albums </h1></br>
+        </p>
+
+
+<div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th> Pochette </th>
+                <th> Album </th>
+                <th> Type d'album </th>
+                <th> Voir ses tracks </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for  album in results.albums.items %}
+                <tr>
+                    {% if album.images|length > 0 %}
+                        <td><img src="{{ album.images[0].url }}" width="100" height="100"/></td>
+                    {% else %}
+                        <td><span height="100" class="glyphicon glyphicon-apple"></span></td>
+                    {% endif %}
+                    <td> {{ album.name }}</td>
+                    <td>{{ album.album_type }}</td>
+                    <td align="center"><a href="{{ url('gettracksbyalbumid', {id: album.id} ) }}"><span
+                                    class="glyphicon glyphicon-search"></span></a></td>
+
+                </tr>
+
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+
+{% endblock %}
+

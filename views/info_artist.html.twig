@@ -1,0 +1,51 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+
+
+        <p>
+        <h1 align="center">Artistes</h1></br>
+        </p>
+
+        <div class="container">
+        <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> Pochette </th>
+                <th> Artiste </th>
+                <th> Genre </th>
+                <th> Voir ses top tracks </th>
+                <th> Voir ses albums </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for  artist in results.artists.items %}
+                <tr>
+                    {% if artist.images|length > 0 %}
+                        <td><img src="{{ artist.images[0].url }}" width="150" height="150"/></td>
+                    {% else %}
+                        <td><span height="100" class="glyphicon glyphicon-apple"></span></td>
+                    {% endif %}
+
+                    <td> {{ artist.name }}</td>
+                    <td>
+                        {% for genre in artist.genres %}
+                         {{ genre|capitalize }}</br>
+                        {% endfor %}
+                    </td>
+                    <td align = "center"><a href="{{ url('getartiststoptracksbyartistid', {id:artist.id}) }}">
+                            <span class="glyphicon glyphicon-search"></span></a></td>
+
+                    <td align = "center"><a href="{{ url('getartistsalbumsbyartistid', {id:artist.id}) }}">
+                            <span class="glyphicon glyphicon-search"></span></a></td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        </div>
+
+
+
+{% endblock %}
